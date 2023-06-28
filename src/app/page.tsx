@@ -1,23 +1,23 @@
 'use client'
 import { useState, useEffect } from "react";
-import { AppBar, Box, Card, Container, CssBaseline, GlobalStyles, Grid, ThemeProvider, Toolbar, Typography, createTheme } from "@mui/material";
+import { AppBar, Container, CssBaseline, GlobalStyles, Grid, ThemeProvider, Toolbar, Typography, createTheme } from "@mui/material";
 import { eachDayOfInterval, getDay } from "date-fns";
 
 import fundo from '../../public/fundo.png'
-import card1 from '../../public/card1.png'
-import card2 from '../../public/card2.png'
-import card3 from '../../public/card3.png'
+// import card1 from '../../public/card1.png'
+// import card2 from '../../public/card2.png'
+// import card3 from '../../public/card3.png'
 
 const defaultTheme = createTheme();
 
 export default function Home() {
   const [treinosFaltantes, setTreinosFaltantes] = useState(0);
 
-  const concluirTreino = () => {
-    setTreinosFaltantes(treinosFaltantes - 1);
-  };
-
   useEffect(() => {
+    const concluirTreino = () => {
+      setTreinosFaltantes((treinosFaltantes) => treinosFaltantes - 1);
+    };
+
     const hoje = new Date();
     const dataCheerfest = new Date("2023-12-02"); // Data do Cheerfest (2 de dezembro de 2023)
 
@@ -39,7 +39,6 @@ export default function Home() {
       clearInterval(timer); // Limpa o timer quando o componente for desmontado
     };
   }, []);
-
   return (
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
